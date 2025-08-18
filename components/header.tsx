@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Bot, Menu, X } from 'lucide-react';
 
 export default function Header() {
-  const headerRef = useRef<HTMLHeaderElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
   const ctaButtonRef = useRef<HTMLButtonElement>(null);

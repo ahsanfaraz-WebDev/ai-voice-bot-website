@@ -195,7 +195,7 @@ export default function Footer() {
                     <li key={link.name}>
                       <a 
                         href={link.href}
-                        className="text-white/60 hover:text-white hover:text-purple-200 transition-colors duration-300 text-sm"
+                        className="text-white/60 hover:text-purple-200 transition-colors duration-300 text-sm"
                       >
                         {link.name}
                       </a>
