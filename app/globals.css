@@ -1,0 +1,421 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #371142;
+  --secondary: #ba3ee0;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-urbanist;
+  }
+}
+
+/* Ensure Urbanist font is loaded */
+.font-urbanist {
+  font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Hero Section - Clean Modern Design */
+.hero-section {
+  font-family: 'Urbanist', sans-serif;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Smooth text rendering */
+.hero-section * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Glass morphism effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button hover effects */
+.hero-section button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-section button:hover {
+  transform: translateY(-2px);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Text Reveal Animations - Run once only */
+@keyframes showup {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes slidein {
+  0% { margin-left: -24rem; }
+  20% { margin-left: -24rem; }
+  35% { margin-left: 0px; }
+  100% { margin-left: 0px; }
+}
+
+@keyframes reveal {
+  0% { opacity: 0; width: 0px; }
+  20% { opacity: 1; width: 0px; }
+  30% { width: 100%; }
+  100% { opacity: 1; width: 100%; }
+}
+
+.animate-showup {
+  animation: showup 3s ease-out forwards;
+}
+
+.animate-slidein {
+  animation: slidein 3s ease-out forwards;
+}
+
+.animate-reveal {
+  animation: reveal 3s ease-out forwards;
+}
+
+/* Why Different Section Enhancements */
+.grid-tile {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grid-tile:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+}
+
+/* Enhanced hover effects */
+.feature-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Gradient text animations */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Animated Cards with Purple Theme */
+.animated-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 280px;
+}
+
+.animated-card .card-background {
+  transition: all 0.25s ease;
+  box-shadow: 
+    0px 3px 6px rgba(0, 0, 0, 0.05),
+    0px 8px 15px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.animated-card .icon-bg {
+  transition: all 0.25s ease;
+}
+
+.animated-card .shine-gradient {
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(
+    from 205deg at 50% 50%, 
+    rgba(168, 85, 247, 0) 0deg, 
+    #A855F7 25deg, 
+    rgba(168, 85, 247, 0.18) 295deg, 
+    rgba(168, 85, 247, 0) 360deg
+  );
+  opacity: 0.15;
+}
+
+/* Tile Positions */
+.animated-card .tile-1 { top: 0; left: 0; height: 10%; width: 22.5%; }
+.animated-card .tile-2 { top: 0; left: 22.5%; height: 10%; width: 27.5%; }
+.animated-card .tile-3 { top: 0; left: 50%; height: 10%; width: 27.5%; }
+.animated-card .tile-4 { top: 0; left: 77.5%; height: 10%; width: 22.5%; }
+.animated-card .tile-5 { top: 10%; left: 0; height: 22.5%; width: 22.5%; }
+.animated-card .tile-6 { top: 10%; left: 22.5%; height: 22.5%; width: 27.5%; }
+.animated-card .tile-7 { top: 10%; left: 50%; height: 22.5%; width: 27.5%; }
+.animated-card .tile-8 { top: 10%; left: 77.5%; height: 22.5%; width: 22.5%; }
+.animated-card .tile-9 { top: 32.5%; left: 50%; height: 22.5%; width: 27.5%; }
+.animated-card .tile-10 { top: 32.5%; left: 77.5%; height: 22.5%; width: 22.5%; }
+
+/* Tile Animation */
+.animated-card .tile {
+  opacity: 0;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-name: tile-pulse;
+}
+
+.animated-card .tile-4,
+.animated-card .tile-6,
+.animated-card .tile-10 {
+  animation-delay: -2s;
+}
+
+.animated-card .tile-3,
+.animated-card .tile-5,
+.animated-card .tile-8 {
+  animation-delay: -4s;
+}
+
+.animated-card .tile-2,
+.animated-card .tile-9 {
+  animation-delay: -6s;
+}
+
+@keyframes tile-pulse {
+  0%, 12.5%, 100% { opacity: 1; }
+  25%, 82.5% { opacity: 0; }
+}
+
+/* Line Positions */
+.animated-card .line-1 .line-h { top: 10%; }
+.animated-card .line-1 .line-v { left: 22.5%; }
+.animated-card .line-2 .line-h { top: 32.5%; }
+.animated-card .line-2 .line-v { left: 50%; }
+.animated-card .line-3 .line-h { top: 55%; }
+.animated-card .line-3 .line-v { right: 22.5%; }
+
+.animated-card .line .line-h,
+.animated-card .line .line-v {
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 0.35s ease;
+}
+
+.animated-card .line .line-v {
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+
+.animated-card .line-1 .line-h,
+.animated-card .line-1 .line-v {
+  transition-delay: 0.3s;
+}
+
+.animated-card .line-2 .line-h,
+.animated-card .line-2 .line-v {
+  transition-delay: 0.15s;
+}
+
+.animated-card .line-3 .line-h,
+.animated-card .line-3 .line-v {
+  transition-delay: 0s;
+}
+
+/* Hover Effects */
+.animated-card:hover .card-background {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 
+    0px 5px 10px rgba(0, 0, 0, 0.04),
+    0px 15px 25px rgba(168, 85, 247, 0.15),
+    0 0 0 1px rgba(168, 85, 247, 0.2);
+}
+
+.animated-card:hover .icon-bg {
+  background-color: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.animated-card:hover .icon svg {
+  color: #A855F7;
+}
+
+.animated-card:hover h4 {
+  color: #E9D5FF;
+}
+
+.animated-card:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.animated-card:hover .shine {
+  opacity: 1;
+}
+
+.animated-card:hover .tiles {
+  opacity: 1;
+  transition-delay: 0.25s;
+}
+
+.animated-card:hover .tile {
+  animation-name: tile-pulse;
+}
+
+.animated-card:hover .line {
+  opacity: 1;
+  transition-duration: 0.15s;
+}
+
+.animated-card:hover .line .line-h {
+  transform: scaleX(1);
+}
+
+.animated-card:hover .line .line-v {
+  transform: scaleY(1);
+}
+
+.animated-card:hover .line-1 .line-h,
+.animated-card:hover .line-1 .line-v {
+  transition-delay: 0s;
+}
+
+.animated-card:hover .line-2 .line-h,
+.animated-card:hover .line-2 .line-v {
+  transition-delay: 0.15s;
+}
+
+.animated-card:hover .line-3 .line-h,
+.animated-card:hover .line-3 .line-v {
+  transition-delay: 0.3s;
+}
+
+/* Background Mask for Cards */
+.animated-card .background {
+  -webkit-mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+  mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+
+  .hero-section nav {
+    padding: 0 1rem;
+  }
+
+  .hero-section .hidden.md\:flex {
+    display: none !important;
+  }
+
+  .hero-section p {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section .hidden.sm\:flex {
+    display: none !important;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
