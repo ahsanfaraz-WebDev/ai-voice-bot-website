@@ -239,12 +239,7 @@ export default function ComparisonSection() {
           }}></div>
         </div>
         
-        <div className="absolute -bottom-24 -right-24 w-80 h-80 opacity-8">
-          <div className="w-full h-full bg-white blur-2xl" style={{
-            borderRadius: '70% 30% 60% 40% / 30% 60% 40% 70%',
-            transform: 'rotate(45deg)'
-          }}></div>
-        </div>
+
         
         {/* Floating Elements */}
         <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-white/20 rounded-full animate-pulse"></div>
@@ -278,32 +273,36 @@ export default function ComparisonSection() {
           {comparisons.map((comparison, index) => (
             <div 
               key={comparison.category}
-              className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:border-white/20"
+              className="group relative bg-white rounded-3xl p-8 transition-all duration-700 hover:scale-110 hover:text-white hover:bg-[#371142] overflow-hidden shadow-lg hover:shadow-2xl z-10 hover:z-20"
+              style={{ minHeight: '400px' }}
             >
+              {/* Hover Color Bubble */}
+              <div className="hover_color_bubble absolute bg-[#371142]/15 w-[100rem] h-[100rem] z-[-1] top-[16rem] rounded-full transform rotate-[-36deg] left-[-18rem] transition-all duration-700 group-hover:top-0"></div>
+
               {/* Category Header */}
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-white/20 to-white/10 rounded-2xl flex items-center justify-center text-white border border-white/20">
+              <div className="flex items-center space-x-3 mb-8 relative z-10">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#371142] shadow-md group-hover:bg-white group-hover:text-[#371142]">
                   {comparison.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">
                   {comparison.category}
                 </h3>
               </div>
 
               {/* Traditional vs AI */}
-              <div className="space-y-6">
+              <div className="space-y-6 relative z-10">
                 {/* Traditional */}
-                <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-6 group-hover:bg-red-500/20 group-hover:border-red-300/50 transition-all duration-300">
                   <div className="flex items-start space-x-3 mb-3">
                     {comparison.traditional.icon}
                     <div>
-                      <h4 className="font-semibold text-red-200 mb-2">
+                      <h4 className="font-semibold text-red-600 mb-2 group-hover:text-red-200">
                         Traditional Bots
                       </h4>
-                      <h5 className="font-medium text-white/90 mb-2">
+                      <h5 className="font-medium text-gray-900 mb-2 group-hover:text-white">
                         {comparison.traditional.title}
                       </h5>
-                      <p className="text-sm text-white/70 leading-relaxed">
+                      <p className="text-sm text-gray-600 leading-relaxed group-hover:text-white/90">
                         {comparison.traditional.description}
                       </p>
                     </div>
@@ -311,26 +310,23 @@ export default function ComparisonSection() {
                 </div>
 
                 {/* AI Powered */}
-                <div className="bg-green-500/10 border border-green-500/20 rounded-2xl p-6">
+                <div className="bg-green-50 border border-green-200 rounded-2xl p-6 group-hover:bg-green-500/20 group-hover:border-green-300/50 transition-all duration-300">
                   <div className="flex items-start space-x-3 mb-3">
                     {comparison.ai.icon}
                     <div>
-                      <h4 className="font-semibold text-green-200 mb-2">
+                      <h4 className="font-semibold text-green-600 mb-2 group-hover:text-green-200">
                         AI Voice Bot
                       </h4>
-                      <h5 className="font-medium text-white/90 mb-2">
+                      <h5 className="font-medium text-gray-900 mb-2 group-hover:text-white">
                         {comparison.ai.title}
                       </h5>
-                      <p className="text-sm text-white/70 leading-relaxed">
+                      <p className="text-sm text-gray-600 leading-relaxed group-hover:text-white/90">
                         {comparison.ai.description}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Hover Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
@@ -351,8 +347,21 @@ export default function ComparisonSection() {
             {advantages.map((advantage, index) => (
               <div 
                 key={advantage.title}
-                className="group text-center bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="group text-center bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:scale-105 relative overflow-hidden"
               >
+                {/* Grid Effect on Bottom */}
+                <div className="absolute bottom-0 left-0 w-full h-16 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                  <div 
+                    className="w-full h-full bg-white"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)
+                      `,
+                      backgroundSize: '8px 8px'
+                    }}
+                  ></div>
+                </div>
                 <div className="w-16 h-16 bg-gradient-to-br from-white/20 to-white/10 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   {advantage.icon}
                 </div>

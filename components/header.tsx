@@ -107,10 +107,10 @@ export default function Header() {
     <>
       <header 
         ref={headerRef}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/20"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#371142]/80 backdrop-blur-md border-b border-purple-300/20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Logo */}
             <div ref={logoRef} className="flex items-center">
               <img 
@@ -126,10 +126,10 @@ export default function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 relative group"
+                  className="text-white/90 hover:text-white font-medium transition-colors duration-200 relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
             </nav>
@@ -148,12 +148,12 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
+                <X className="w-6 h-6 text-white" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
+                <Menu className="w-6 h-6 text-white" />
               )}
             </button>
           </div>
@@ -163,7 +163,7 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className="fixed top-16 right-0 bottom-0 w-80 bg-white shadow-2xl z-40 md:hidden"
+        className="fixed top-16 right-0 bottom-0 w-80 sm:w-72 bg-[#371142]/95 backdrop-blur-md shadow-2xl z-40 md:hidden border-l border-purple-300/20"
         style={{ transform: 'translateX(100%)' }}
       >
         <div className="p-6 space-y-6">
@@ -173,17 +173,17 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={toggleMobileMenu}
-                className="block text-lg font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200 py-2"
+                className="block text-lg font-medium text-white/90 hover:text-white transition-colors duration-200 py-3 px-4 rounded-lg hover:bg-white/10 relative group"
               >
                 {link.name}
+                <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
           
-          <div className="pt-4 border-t border-gray-200">
+          <div className="pt-4 border-t border-purple-300/20">
             <Button
-              className="w-full font-semibold uppercase tracking-wider py-3 text-sm transition-all duration-300"
-              style={{ backgroundColor: 'var(--secondary)' }}
+              className="w-full font-semibold uppercase tracking-wider py-3 text-sm transition-all duration-300 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
               onClick={toggleMobileMenu}
             >
               Book Demo
@@ -195,7 +195,7 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 md:hidden"
           onClick={toggleMobileMenu}
         />
       )}
