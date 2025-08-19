@@ -113,14 +113,16 @@ export default function FinalCTASection() {
 
 
       // Pulsing effect for main CTA
-      gsap.to(ctaRef.current?.children[0], {
-        scale: 1.05,
-        duration: 2,
-        yoyo: true,
-        repeat: -1,
-        ease: "power2.inOut",
-        delay: 2
-      });
+      if (ctaRef.current?.children[0]) {
+        gsap.to(ctaRef.current.children[0], {
+          scale: 1.05,
+          duration: 2,
+          yoyo: true,
+          repeat: -1,
+          ease: "power2.inOut",
+          delay: 2
+        });
+      }
 
     }, sectionRef);
 
