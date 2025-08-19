@@ -74,6 +74,10 @@ export default function HeroSection() {
         {/* Light purple accents */}
         <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-gradient-to-br from-purple-400/5 to-transparent rounded-full blur-2xl"></div>
         <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-tr from-purple-300/8 to-transparent rounded-full blur-xl"></div>
+        
+        {/* White Shades */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-white/10 via-white/5 to-transparent blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-white/8 via-white/4 to-transparent blur-xl"></div>
       </div>
 
 
@@ -83,9 +87,11 @@ export default function HeroSection() {
         <nav className="flex items-center justify-between max-w-6xl mx-auto">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-white tracking-tight">
-              AI Call Bot
-            </div>
+            <img 
+              src="/icon.png" 
+              alt="Logo" 
+              className="w-28 h-12 object-contain rounded-lg"
+            />
           </div>
 
           {/* Navigation Links */}

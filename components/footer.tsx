@@ -156,10 +156,13 @@ export default function Footer() {
           {/* Logo & Description */}
           <div ref={logoRef} className="lg:col-span-2">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-3">
-                AI Voice
-                <span className="text-transparent bg-gradient-to-r from-purple-300 to-purple-100 bg-clip-text"> Bot</span>
-              </h3>
+              <div className="mb-3">
+                <img 
+                  src="/icon.png" 
+                  alt="Logo" 
+                  className="w-28 h-16 object-contain rounded-lg"
+                />
+              </div>
               <p className="text-white/70 leading-relaxed">
                 Transform your customer interactions with intelligent AI voice technology. 
                 Build, deploy, and scale conversational experiences that feel genuinely human.

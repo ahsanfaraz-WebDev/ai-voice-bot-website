@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
-import { Bot, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
@@ -112,11 +112,12 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div ref={logoRef} className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
-                <Bot className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">AI Call Bot</span>
+            <div ref={logoRef} className="flex items-center">
+              <img 
+                src="/icon.png" 
+                alt="Logo" 
+                className="w-10 h-10 object-contain rounded-lg"
+              />
             </div>
 
             {/* Desktop Navigation */}

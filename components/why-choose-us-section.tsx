@@ -143,20 +143,50 @@ export default function WhyChooseUsSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen bg-gradient-to-br from-[#371142] via-[#4e0c62] to-[#2d1b35] font-urbanist overflow-hidden"
+      className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 font-urbanist overflow-hidden"
     >
 
-      {/* Background Effects */}
+      {/* Background Elements - Organic Blob Shades */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-purple-600/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#371142] to-transparent"></div>
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-br from-purple-400/5 to-transparent rounded-full blur-2xl"></div>
-      </div>
-
-      {/* Geometric Patterns */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/3 right-1/4 w-32 h-32 border border-white/20 rotate-45 rounded-lg"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-20 h-20 border border-purple-300/30 rounded-full"></div>
+        {/* Top Left Organic Blob */}
+        <div className="absolute -top-32 -left-32 w-96 h-96 opacity-10">
+          <div className="w-full h-full bg-[#371142] blur-3xl" style={{
+            borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+            transform: 'rotate(-15deg)'
+          }}></div>
+        </div>
+        
+        {/* Top Right Organic Blob */}
+        <div className="absolute -top-20 -right-20 w-80 h-80 opacity-8">
+          <div className="w-full h-full bg-[#371142] blur-2xl" style={{
+            borderRadius: '40% 60% 70% 30% / 40% 70% 30% 60%',
+            transform: 'rotate(25deg)'
+          }}></div>
+        </div>
+        
+        {/* Bottom Left Organic Blob */}
+        <div className="absolute -bottom-24 -left-24 w-72 h-72 opacity-12">
+          <div className="w-full h-full bg-[#371142] blur-2xl" style={{
+            borderRadius: '70% 30% 60% 40% / 30% 60% 40% 70%',
+            transform: 'rotate(45deg)'
+          }}></div>
+        </div>
+        
+        {/* Bottom Right Organic Blob */}
+        <div className="absolute -bottom-16 -right-16 w-64 h-64 opacity-15">
+          <div className="w-full h-full bg-[#371142] blur-xl" style={{
+            borderRadius: '50% 50% 80% 20% / 60% 40% 60% 40%',
+            transform: 'rotate(-30deg)'
+          }}></div>
+        </div>
+        
+        {/* Center Accent Blob */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 opacity-5">
+          <div className="w-full h-full bg-[#371142] blur-3xl" style={{
+            borderRadius: '80% 20% 60% 40% / 70% 30% 70% 30%',
+            transform: 'rotate(60deg)'
+          }}></div>
+        </div>
       </div>
 
       <div className="relative z-10 container mx-auto px-8 py-20">
@@ -164,16 +194,16 @@ export default function WhyChooseUsSection() {
         {/* Header */}
         <div className="text-center mb-20">
           <div ref={titleRef} className="mb-6">
-            <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               Why Choose 
-              <span className="block text-transparent bg-gradient-to-r from-purple-300 via-purple-100 to-white bg-clip-text mt-2">
+              <span className="block text-transparent bg-gradient-to-r from-[#371142] via-[#4a1555] to-[#5d1a68] bg-clip-text mt-2">
                 Us
               </span>
             </h2>
           </div>
           
           <div ref={subtitleRef}>
-            <p className="text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               We don't just build voice bots. We craft intelligent conversational experiences 
               that understand context, emotion, and intent.
             </p>
@@ -188,20 +218,20 @@ export default function WhyChooseUsSection() {
               className="animated-card group relative cursor-pointer"
             >
               {/* Card Background */}
-              <div className="card-background absolute inset-0 rounded-2xl bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-xl border border-white/20"></div>
+              <div className="card-background absolute inset-0 rounded-2xl bg-gradient-to-br from-[#371142] to-[#2d0d35] shadow-xl border border-[#371142]/20"></div>
               
               {/* Card Content */}
               <div className="relative z-10 p-8 pt-12">
                 {/* Icon */}
                 <span className="icon relative z-20 block w-fit p-2 mb-4">
-                  <div className="icon-bg absolute inset-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300"></div>
-                  <div className="relative z-10 w-6 h-6 text-purple-300 transition-colors duration-300">
+                  <div className="icon-bg absolute inset-1 rounded-full bg-white/20 border border-white/30 backdrop-blur-sm transition-all duration-300"></div>
+                  <div className="relative z-10 w-6 h-6 text-white transition-colors duration-300">
                     {feature.icon}
                   </div>
                 </span>
 
                 {/* Metric Badge */}
-                <div className="absolute top-4 right-4 bg-purple-500/20 text-purple-200 text-xs font-medium px-3 py-1 rounded-full border border-purple-400/30 z-20">
+                <div className="absolute top-4 right-4 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full border border-white/30 z-20">
                   {feature.metric}
                 </div>
 
@@ -211,7 +241,7 @@ export default function WhyChooseUsSection() {
                 </h4>
 
                 {/* Description */}
-                <p className="relative z-20 text-sm text-white/70 leading-relaxed transition-colors duration-300">
+                <p className="relative z-20 text-sm text-white/90 leading-relaxed transition-colors duration-300">
                   {feature.description}
                 </p>
               </div>
@@ -256,12 +286,12 @@ export default function WhyChooseUsSection() {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12">
+        <div className="bg-white/80 backdrop-blur-sm border border-[#371142]/10 rounded-3xl p-8 lg:p-12 shadow-lg">
           <div className="text-center mb-12">
-            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Trusted by Industry Leaders
             </h3>
-            <p className="text-white/70 text-lg">
+            <p className="text-gray-600 text-lg">
               Real numbers that showcase our commitment to excellence
             </p>
           </div>
@@ -272,10 +302,10 @@ export default function WhyChooseUsSection() {
                 key={index}
                 className="text-center group cursor-pointer hover:scale-105 transition-transform duration-300"
               >
-                <div className="text-4xl lg:text-5xl font-bold text-transparent bg-gradient-to-br from-purple-300 to-white bg-clip-text mb-2 group-hover:from-purple-200 group-hover:to-purple-400 transition-all duration-300">
+                <div className="text-4xl lg:text-5xl font-bold text-transparent bg-gradient-to-br from-[#371142] to-[#5d1a68] bg-clip-text mb-2 group-hover:from-[#2d0d35] group-hover:to-[#4a1555] transition-all duration-300">
                   {stat.number}
                 </div>
-                <div className="text-white/60 text-sm lg:text-base font-medium group-hover:text-white/90 transition-colors duration-300">
+                <div className="text-gray-600 text-sm lg:text-base font-medium group-hover:text-gray-800 transition-colors duration-300">
                   {stat.label}
                 </div>
               </div>
