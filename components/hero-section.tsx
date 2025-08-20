@@ -3,6 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
+import dynamic from 'next/dynamic';
+
+const Avatar3D = dynamic(() => import('@/components/avatar-3d'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-300"></div>
+    </div>
+  )
+});
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -14,10 +24,7 @@ export default function HeroSection() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const sideElementRef = useRef<HTMLDivElement>(null);
   
-  // Fixed heights for audio visualization to prevent hydration mismatch
-  const [audioBarHeights] = useState(() => [
-    12, 18, 15, 22, 8, 25, 14, 19
-  ]);
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -74,10 +81,6 @@ export default function HeroSection() {
         {/* Light purple accents */}
         <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-gradient-to-br from-purple-400/5 to-transparent rounded-full blur-2xl"></div>
         <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-tr from-purple-300/8 to-transparent rounded-full blur-xl"></div>
-        
-        {/* White Shades */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-white/10 via-white/5 to-transparent blur-2xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-white/8 via-white/4 to-transparent blur-xl"></div>
       </div>
 
 
@@ -130,10 +133,10 @@ export default function HeroSection() {
 
       {/* Main Content */}
       <main className="relative z-10 flex items-center min-h-[calc(100vh-120px)] px-8 mt-10">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
           {/* Left Content */}
-          <div ref={heroContentRef} className="space-y-8">
+          <div ref={heroContentRef} className="space-y-8 order-2 lg:order-1">
             
             {/* Badge */}
             <div className="inline-block">
@@ -197,129 +200,14 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Side Element - Voice Bots Showcase */}
-          <div ref={sideElementRef} className="hidden lg:block relative">
-            <div className="relative space-y-4">
-              
-              {/* Voice Bot 1 - Customer Service */}
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="relative">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                      </svg>
-                    </div>
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
-                  </div>
-                  <div>
-                    <div className="text-white font-medium text-base">Sarah</div>
-                    <div className="text-purple-300 text-xs">Customer Support Voice AI</div>
-                  </div>
-                </div>
-                
-                {/* Voice Waveform */}
-                <div className="bg-purple-500/20 rounded-xl p-3 mb-3">
-                  <div className="flex items-center justify-center space-x-1 h-8">
-                    {[...Array(16)].map((_, i) => (
-                      <div 
-                        key={i}
-                        className="w-0.5 bg-gradient-to-t from-purple-400 to-purple-200 rounded-full animate-pulse"
-                        style={{
-                          height: `${20 + Math.sin(i * 0.5) * 10}px`,
-                          animationDelay: `${i * 0.06}s`,
-                          animationDuration: '1.5s'
-                        }}
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-purple-200 text-xs">"How can I help you today?"</div>
-                </div>
-              </div>
-
-              {/* Voice Bot 2 - Sales */}
-              <div className="bg-gradient-to-br from-white/12 to-white/7 backdrop-blur-xl border border-purple-300/20 rounded-2xl p-4 shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-500 ml-6">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="relative">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-300 to-purple-500 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                      </svg>
-                    </div>
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-purple-400 rounded-full border-2 border-white animate-pulse"></div>
-                  </div>
-                  <div>
-                    <div className="text-white font-medium text-base">Alex</div>
-                    <div className="text-purple-200 text-xs">Sales Voice AI</div>
-                  </div>
-                </div>
-                
-                {/* Voice Waveform */}
-                <div className="bg-purple-400/20 rounded-xl p-3 mb-3">
-                  <div className="flex items-center justify-center space-x-1 h-8">
-                    {[...Array(14)].map((_, i) => (
-                      <div 
-                        key={i}
-                        className="w-0.5 bg-gradient-to-t from-purple-300 to-purple-100 rounded-full animate-pulse"
-                        style={{
-                          height: `${15 + Math.cos(i * 0.3) * 15}px`,
-                          animationDelay: `${i * 0.08}s`,
-                          animationDuration: '2s'
-                        }}
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-purple-100 text-xs">"Found 3 perfect solutions for you"</div>
-                </div>
-              </div>
-
-              {/* Voice Bot 3 - Technical */}
-              <div className="bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-xl border border-purple-200/20 rounded-2xl p-4 shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="relative">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-200 to-purple-400 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                      </svg>
-                    </div>
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-purple-300 rounded-full border-2 border-white animate-pulse"></div>
-                  </div>
-                  <div>
-                    <div className="text-white font-medium text-base">Maya</div>
-                    <div className="text-purple-100 text-xs">Technical Voice AI</div>
-                  </div>
-                </div>
-                
-                {/* Voice Waveform */}
-                <div className="bg-purple-300/20 rounded-xl p-3 mb-3">
-                  <div className="flex items-center justify-center space-x-1 h-8">
-                    {audioBarHeights.map((height, i) => (
-                      <div 
-                        key={i}
-                        className="w-0.5 bg-gradient-to-t from-purple-200 to-white rounded-full animate-pulse"
-                        style={{
-                          height: `${height + 10}px`,
-                          animationDelay: `${i * 0.12}s`,
-                          animationDuration: '1.8s'
-                        }}
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-purple-50 text-xs">"Running system diagnostic..."</div>
-                </div>
-              </div>
+          {/* Right Side Element - 3D Avatar */}
+          <div ref={sideElementRef} className="flex relative justify-center items-end w-full order-1 lg:order-2 h-72 sm:h-80 lg:h-[500px]">
+            {/* 3D Avatar - Ready Player Me */}
+            <div className="w-full h-full relative">
+              <Avatar3D 
+                avatarUrl="https://models.readyplayer.me/68a5b43c4dd25e58786b6368.glb"
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
