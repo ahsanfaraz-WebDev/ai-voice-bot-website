@@ -3,16 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
-import dynamic from 'next/dynamic';
-
-const Avatar3D = dynamic(() => import('@/components/avatar-3d'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-300"></div>
-    </div>
-  )
-});
+import VoiceAssistant from '@/components/voice-assistant';
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -23,6 +14,10 @@ export default function HeroSection() {
   const descriptionRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const sideElementRef = useRef<HTMLDivElement>(null);
+  
+  // Voice assistant state
+  const [isListening, setIsListening] = useState(false);
+  const [volume, setVolume] = useState(0);
   
 
 
@@ -75,6 +70,34 @@ export default function HeroSection() {
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
+        {/* Minimal Grid Tiles - Top Left Corner */}
+        <div 
+          className="absolute top-0 left-0 w-1/2 h-1/2 opacity-70"
+          style={{
+            backgroundImage: `
+              linear-gradient(#4e0c62 2px, transparent 2px),
+              linear-gradient(90deg, #4e0c62 2px, transparent 2px)
+            `,
+            backgroundSize: '40px 40px',
+            maskImage: 'radial-gradient(circle at top left, black 80%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(circle at top left, black 80%, transparent 100%)'
+          }}
+        />
+        
+        {/* Subtle Glow Effect for Grid */}
+        <div 
+          className="absolute top-0 left-0 w-1/3 h-1/3 opacity-50"
+          style={{
+            background: `
+              radial-gradient(circle at 20px 20px, #4e0c62 1.5px, transparent 2px)
+            `,
+            backgroundSize: '40px 40px',
+            filter: 'blur(1px)',
+            maskImage: 'radial-gradient(circle at top left, black 50%, transparent 80%)',
+            WebkitMaskImage: 'radial-gradient(circle at top left, black 50%, transparent 80%)'
+          }}
+        />
+        
         <div className="absolute top-1/4 left-0 w-1/2 h-1/2 bg-gradient-to-r from-[#4e0c62]/20 to-transparent"></div>
         <div className="absolute bottom-0 right-0 w-2/3 h-2/3 bg-gradient-to-tl from-[#371142]/30 to-transparent"></div>
         <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#6b1f7a]/10 rounded-full blur-3xl"></div>
@@ -200,14 +223,24 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Side Element - 3D Avatar */}
-          <div ref={sideElementRef} className="flex relative justify-center items-end w-full order-1 lg:order-2 h-72 sm:h-80 lg:h-[500px]">
-            {/* 3D Avatar - Ready Player Me */}
-            <div className="w-full h-full relative">
-              <Avatar3D 
-                avatarUrl="https://models.readyplayer.me/68a5b43c4dd25e58786b6368.glb"
+          {/* Right Side Element - Voice Assistant */}
+          <div ref={sideElementRef} className="flex relative justify-center items-center w-full order-1 lg:order-2 h-72 sm:h-80 lg:h-[500px]">
+            {/* Voice Assistant Animation */}
+            <div className="w-full h-full relative flex items-center justify-center">
+              <VoiceAssistant 
+                isListening={isListening}
+                volume={volume}
+                size={400}
                 className="w-full h-full"
               />
+              
+              {/* Interactive Button */}
+              <button
+                onClick={() => setIsListening(!isListening)}
+                className="absolute bottom-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 text-sm font-medium"
+              >
+                {isListening ? '🎙️ Listening...' : '🎤 Start Voice'}
+              </button>
             </div>
           </div>
         </div>
